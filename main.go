@@ -9,9 +9,17 @@ import (
 )
 
 func main() {
+	PlainText := os.Getenv("INPUT_PLAIN")
+	IsPlainText := false
+
+	if PlainText == "true" {
+		IsPlainText = true
+	}
+
 	options := argocd.APIOptions{
 		Address: os.Getenv("INPUT_ADDRESS"),
 		Token:   os.Getenv("INPUT_TOKEN"),
+		PlainText: IsPlainText,
 	}
 
 	api := argocd.NewAPI(options)
